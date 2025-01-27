@@ -74,7 +74,7 @@ fun VideoScreen(
                 .weight(0.8f)
         ) {
             AnimatedBorderCard(
-                shape = RoundedCornerShape(size = 5.dp),
+                shape = RoundedCornerShape(size = 15.dp),
                 borderWidth = if (isLoading) 3.dp else 0.dp,
                 gradient = Brush.sweepGradient(
                     listOf(
@@ -109,7 +109,7 @@ fun VideoScreen(
                 enabled = prompt.isNotEmpty() && !isLoading,
                 modifier = Modifier.align(Alignment.CenterVertically)
             ) {
-                Text(text = stringResource(R.string.action_go))
+                Text(text = stringResource(R.string.action_send))
             }
         }
     }
@@ -150,10 +150,10 @@ fun CameraScreen(
 
     Box(modifier = modifier) {
         AndroidView(factory = { previewView }, modifier = Modifier.fillMaxSize())
-        cameraController.setImageAnalysisAnalyzer(
-            executor,
-            ConvertImageToBitmapAnalyser(onFrameChange)
-        )
+        cameraController.setImageAnalysisAnalyzer(executor) { imageProxy ->
+            imageProxy.imageBitmap?.let(onFrameChange)
+            imageProxy.close()
+        }
     }
 }
 

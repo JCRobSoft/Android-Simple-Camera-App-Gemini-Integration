@@ -15,7 +15,7 @@ val videoKoinModule = module {
     singleOf(::GeminiVideoAnalyser) bind VideoAnalyser::class
     single {
         GenerativeModel(
-            modelName = "gemini-1.5-flash", apiKey = BuildConfig.apiKey
+            modelName = "gemini-1.5-flash", apiKey = BuildConfig.GEMINI_API_KEY
         )
     }
 }

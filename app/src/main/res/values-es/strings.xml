@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GeminiTest</string>
+    <string name="action_send">Enviar</string>
+    <string name="label_prompt">Mensaje</string>
+    <string name="action_close">Cerrar</string>
+</resources>
